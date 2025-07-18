@@ -21,7 +21,16 @@ public class Main {
         //printFirstFivePosts(driver);
 
 
-        printRespondedPostTitles(driver);
+        //printRespondedPostTitles(driver);
+
+        //printLongTitlePosts(driver);
+
+        //printPostsWithQuestionMark(driver);
+
+        //printPostsWithNoReplies(driver);
+
+        printPostsTitleStartsWithP(driver);
+
 
         driver.quit();
     }
@@ -67,6 +76,55 @@ public class Main {
             }
         }
     }
+
+    public static void printLongTitlePosts(WebDriver driver) {
+        List<WebElement> posts = driver.findElements(LocatorsStrategies.TITLE_LENGTH_14_PLUS);
+
+        System.out.println("Posts with titles length >= 14:");
+        for (int i = 0; i < posts.size(); i++) {
+            try {
+                WebElement titleElement = posts.get(i).findElement(By.cssSelector("h2.forum--question-item-heading > a"));
+                String title = titleElement.getText();
+                System.out.println((i + 1) + ". " + title + " (length: " + title.length() + ")");
+            } catch (NoSuchElementException e) {
+                System.out.println((i + 1) + ". [Title not found]");
+            }
+        }
+    }
+
+
+    public static void printPostsWithQuestionMark(WebDriver driver) {
+        List<WebElement> posts = driver.findElements(LocatorsStrategies.QUESTION_MARK_TITLES);
+        System.out.println("Posts with '?' in the title:");
+        for (int i = 0; i < posts.size(); i++) {
+            WebElement titleElement = posts.get(i).findElement(By.cssSelector("h2.forum--question-item-heading > a"));
+            System.out.println((i + 1) + ". " + titleElement.getText());
+        }
+    }
+
+    public static void printPostsWithNoReplies(WebDriver driver) {
+        List<WebElement> posts = driver.findElements(LocatorsStrategies.NO_REPLIES_POSTS);
+        System.out.println("Posts without replies (0 replies):");
+        for (int i = 0; i < posts.size(); i++) {
+            WebElement titleElement = posts.get(i).findElement(By.cssSelector("h2.forum--question-item-heading > a"));
+            System.out.println((i + 1) + ". " + titleElement.getText() + " (0 replies)");
+        }
+    }
+
+
+    public static void printPostsTitleStartsWithP(WebDriver driver) {
+        List<WebElement> posts = driver.findElements(LocatorsStrategies.TITLE_STARTS_WITH_P);
+        System.out.println("Posts with title starting with 'P' or 'p':");
+        for (int i = 0; i < posts.size(); i++) {
+            WebElement titleElement = posts.get(i).findElement(By.cssSelector("h2.forum--question-item-heading > a"));
+            System.out.println((i + 1) + ". " + titleElement.getText());
+        }
+    }
+
+
+
+
+
 
 
 
