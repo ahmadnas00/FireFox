@@ -20,6 +20,7 @@ public class Main {
         //printFirstPostTitle(driver);
         //printFirstFivePosts(driver);
 
+
         printRespondedPostTitles(driver);
 
         driver.quit();
