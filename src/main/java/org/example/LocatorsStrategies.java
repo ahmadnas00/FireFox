@@ -7,7 +7,7 @@ public class LocatorsStrategies {
     public static final String baseURL = "https://support.mozilla.org/en-US/questions/firefox?show=all";
 
     public static final By ASKQUESTION = By.xpath("//a[text()='Ask a Question']");
-    public static final By SEARCH_INPUT = By.xpath("//input[@id='search-q' and contains(@placeholder, 'Search questions')]");
+    public static final By SEARCH_INPUT = By.xpath("//input[@id='search-q' and contains(@placeholder, 'Search Support')]");
     public static final By FIRST_POST = By.xpath("//div[@id='questions-list']/section/article[1]");
     public static final By FIRST_5_POSTS = By.xpath("//div[@id='questions-list']/section/article[position() <= 5]");
     public static final By FIRST_POST_TIME = By.xpath("(//div[@id='questions-list']//article)[1]//div[@class='forum--user-meta']/p[@class='user-meta-asked-by']/text()[2]");
